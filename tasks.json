@@ -1,7 +1,7 @@
 [
-  { "id": 1, "title": "Вивчити JavaScript", "completed": false },
-  { "id": 2, "title": "Зробити домашнє завдання", "completed": true },
-  { "id": 3, "title": "Піти на прогулянку", "completed": false },
-  { "id": 4, "title": "Почитати книгу", "completed": false },
-  { "id": 5, "title": "Подивитись навчальне відео", "completed": true }
+  { "id": 1, "title": "Вивчити JavaScript" },
+  { "id": 2, "title": "Зробити домашнє завдання" },
+  { "id": 3, "title": "Піти на прогулянку" },
+  { "id": 4, "title": "Почитати книгу" },
+  { "id": 5, "title": "Подивитись навчальне відео" }
 ]

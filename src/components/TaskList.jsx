@@ -1,7 +1,7 @@
-import css from "./TaskList.module.css";
-import { Component } from "react";
+import React, { Component } from "react";
 import { TaskListItem } from "./TaskListItem";
-import tasks from "./../../tasks.json";
+import tasks from "../../tasks.json";
+import css from "./TaskList.module.css";
 
 export class TaskList extends Component {
   constructor(props) {
@@ -11,12 +11,16 @@ export class TaskList extends Component {
     };
   }
 
+  checkTask = (event) => {
+    event.target.parentElement.classList.toggle("checked");
+  };
+
   deleteTask = (event) => {
-    const id = event.target.dataset.id;
+    const id = event.target.parentElement.dataset.id;
+
+    const index = this.state.tasks.findIndex((task) => task.id === Number(id));
 
     const newTasks = [...this.state.tasks];
-
-    const index = newTasks.findIndex((task) => task.id === id);
 
     newTasks.splice(index, 1);
 
@@ -25,21 +29,21 @@ export class TaskList extends Component {
     });
   };
 
-  checkTask = (event) => {
-    event.target.classList.toggle("checked");
-  };
-
   render() {
     return (
       <ul className={css.list}>
-        {this.state.tasks.map((task) => (
-          <TaskListItem
-            key={task.id}
-            checkTask={this.checkTask}
-            deleteTask={this.deleteTask}
-            name={task.title}
-          />
-        ))}
+        {this.state.tasks.map((task) => {
+          return (
+            <TaskListItem
+              key={task.id}
+              name={task.title}
+              onChange={this.checkTask}
+              onClick={this.deleteTask}
+              taskId={task.id}
+            ></TaskListItem>
+          );
+        })}
+        ;
       </ul>
     );
   }

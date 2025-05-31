@@ -1,11 +1,12 @@
 import css from "./TaskListItem.module.css";
+import "./checked.css";
 
-export const TaskListItem = ({ name, deleteTask, checkTask }) => {
+export const TaskListItem = ({ name, onChange, onClick, taskId }) => {
   return (
-    <li className={css.item}>
-      <input onChange={checkTask} type="checkbox" className={css.checkbox} />
+    <li data-id={taskId}>
+      <input type="checkbox" onChange={onChange} />
       <p className={css.name}>{name}</p>
-      <button onClick={deleteTask} className={css.button}>
+      <button className={css.delete} onClick={onClick}>
         Delete
       </button>
     </li>
